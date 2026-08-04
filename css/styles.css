@@ -65,17 +65,17 @@ html, body {
 .nav-tab::after {
     content: '';
     position: absolute;
-    bottom: -6px;
+    bottom: -4px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
-    height: 4px;
+    height: 2px;
     background-color: #5C9E31;
     border-radius: 999px;
     transition: width 0.3s ease;
 }
 .nav-tab.active::after {
-    width: 36px;
+    width: 32px;
 }
 
 /* Custom Slim Scrollbars for inner containers on smaller screens */

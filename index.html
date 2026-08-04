@@ -6,6 +6,17 @@
     <title>Livraria e Papelaria Lusitana — Figueira da Foz</title>
     <meta name="description" content="A sua livraria e papelaria de confiança na Figueira da Foz desde 1933. Reconhecida pelo programa 'Comércio com História'.">
     
+    <!-- Open Graph / WhatsApp Meta Tags -->
+    <meta property="og:title" content="Livraria e Papelaria Lusitana — Figueira da Foz">
+    <meta property="og:description" content="A sua livraria e papelaria de confiança na Figueira da Foz desde 1933. Reconhecida pelo programa 'Comércio com História'.">
+    <meta property="og:image" content="https://livrariaweb.pages.dev/img/logo.png">
+    <meta property="og:url" content="https://livrariaweb.pages.dev/">
+    <meta property="og:type" content="website">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -35,39 +46,8 @@
         <div class="max-w-6xl mx-auto px-5 py-2.5 flex items-center justify-between">
             <!-- Brand Logo Button -->
             <button onclick="switchView('inicio')" class="flex items-center gap-3 group text-left focus:outline-none">
-                <!-- High Precision Vector Reproduction of Lusitana Book Mark -->
-                <svg viewBox="0 0 200 200" class="h-10 sm:h-12 w-auto transition-transform group-hover:scale-105 drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="rightPageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#B8D373" />
-                            <stop offset="60%" stop-color="#DCEBB3" />
-                            <stop offset="100%" stop-color="#EDF5D9" />
-                        </linearGradient>
-                        <linearGradient id="centerPageGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#7B933C" />
-                            <stop offset="70%" stop-color="#A1BE50" />
-                            <stop offset="100%" stop-color="#C5DF79" />
-                        </linearGradient>
-                        <linearGradient id="orangeRibbonGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#E88923" />
-                            <stop offset="100%" stop-color="#FFA842" />
-                        </linearGradient>
-                        <filter id="softShadow" x="-10%" y="-10%" width="130%" height="130%">
-                            <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#1A1A1A" flood-opacity="0.1" />
-                        </filter>
-                    </defs>
-
-                    <g filter="url(#softShadow)">
-                        <path d="M 92 148 C 62 138 38 136 26 145 C 38 125 50 106 58 98 C 68 95 82 98 92 105 Z" 
-                              fill="#FFFFFF" stroke="#2B2B2B" stroke-width="2" stroke-linejoin="round"/>
-                        <path d="M 92 148 C 112 140 142 140 174 148 C 162 118 135 106 92 105 Z" 
-                              fill="url(#rightPageGrad)" stroke="#2B2B2B" stroke-width="2" stroke-linejoin="round"/>
-                        <path d="M 92 148 C 88 95 84 45 96 30 C 105 52 96 108 174 148 Z" 
-                              fill="url(#centerPageGrad)" stroke="#2B2B2B" stroke-width="2" stroke-linejoin="round"/>
-                        <path d="M 44 122 C 48 78 68 62 95 72" 
-                              stroke="url(#orangeRibbonGrad)" stroke-width="6" stroke-linecap="round" fill="none"/>
-                    </g>
-                </svg>
+                <!-- Official Image Logo -->
+                <img src="img/logo.png" alt="Logo Papelaria Lusitana" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105 drop-shadow-sm">
 
                 <div class="flex flex-col justify-center">
                     <span class="font-serif font-bold text-xl sm:text-2xl tracking-tight text-brand-dark leading-none -mb-0.5">LUSITANA</span>
@@ -125,31 +105,30 @@
                     </div>
                 </div>
 
-                <a href="tel:+351233422208" class="hidden md:inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-green-light text-brand-green hover:bg-brand-green hover:text-white transition-all shadow-sm" title="Ligar para a loja">
-                    <i class="fa-solid fa-phone text-xs"></i>
-                </a>
+                <!-- Social Icons -->
+                <div class="hidden md:flex items-center gap-3 border-l border-paper-200/80 pl-4 ml-1">
+                    <a href="https://www.instagram.com/papelaria_lusitana/" target="_blank" rel="noopener noreferrer" class="text-ink-500 hover:text-brand-green transition-colors" title="Instagram"><i class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="https://www.facebook.com/p/Papelaria-Lusitana-61553250991238/" target="_blank" rel="noopener noreferrer" class="text-ink-500 hover:text-brand-green transition-colors" title="Facebook"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+                    <a href="mailto:papelarialusitana@gmail.com" class="text-ink-500 hover:text-brand-green transition-colors" title="Email"><i class="fa-solid fa-envelope text-lg"></i></a>
+                </div>
             </div>
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div class="sm:hidden flex justify-around border-t border-paper-200/70 py-2 text-[10.5px] uppercase tracking-wider font-semibold text-ink-500 bg-white/80 backdrop-blur-md">
-            <button onclick="switchView('inicio')" id="tab-inicio-mobile" class="nav-tab active px-2 py-1 rounded-lg">Início</button>
-            <button onclick="switchView('historia')" id="tab-historia-mobile" class="nav-tab px-2 py-1 rounded-lg">História</button>
-            <button onclick="switchView('servicios')" id="tab-servicios-mobile" class="nav-tab px-2 py-1 rounded-lg">Serviços</button>
-            <button onclick="switchView('contacto')" id="tab-contacto-mobile" class="nav-tab px-2 py-1 rounded-lg">Contacto</button>
+        <div class="sm:hidden flex justify-around border-t border-paper-200/70 py-1.5 text-[10.5px] uppercase tracking-wider font-semibold text-ink-500 bg-white/80 backdrop-blur-md">
+            <button onclick="switchView('inicio')" id="tab-inicio-mobile" class="nav-tab active px-2 py-0.5 rounded-lg">Início</button>
+            <button onclick="switchView('historia')" id="tab-historia-mobile" class="nav-tab px-2 py-0.5 rounded-lg">História</button>
+            <button onclick="switchView('servicios')" id="tab-servicios-mobile" class="nav-tab px-2 py-0.5 rounded-lg">Serviços</button>
+            <button onclick="switchView('contacto')" id="tab-contacto-mobile" class="nav-tab px-2 py-0.5 rounded-lg">Contacto</button>
         </div>
     </header>
 
     <!-- Main Viewport Content Area -->
     <main id="main-viewport-container" class="flex-1 w-full max-w-6xl mx-auto px-5 overflow-y-auto custom-scrollbar min-h-0 relative z-10">
 
-        <!-- Persistent Global Subtitle & Socials -->
-        <div class="w-full pt-4 sm:pt-6 pb-0 flex flex-row items-center justify-between text-ink-500 select-none">
+        <!-- Persistent Global Subtitle -->
+        <div class="w-full pt-4 sm:pt-6 pb-0 flex flex-row items-center justify-center sm:justify-start text-ink-500 select-none">
             <span class="font-sans font-semibold text-xs sm:text-sm tracking-wide">Papelaria e Livraria na Figueira da Foz — Desde 1933.</span>
-            <div class="flex items-center gap-4 pr-1 md:mr-12">
-                <a href="#" target="_blank" class="hover:text-brand-green transition-colors" title="Instagram"><i class="fa-brands fa-instagram text-sm sm:text-base"></i></a>
-                <a href="#" target="_blank" class="hover:text-brand-green transition-colors" title="Facebook"><i class="fa-brands fa-facebook-f text-sm sm:text-base"></i></a>
-            </div>
         </div>
 
         <!-- VIEW 1: INÍCIO -->
@@ -262,6 +241,18 @@
                             </div>
                         </div>
 
+                    </div>
+
+                    <!-- Phone Contact for Desktop (Expandable) -->
+                    <div class="hidden lg:flex mt-12 ml-14 stagger-5" style="animation-delay: 0.8s">
+                        <a href="tel:+351233422208" class="group inline-flex items-center h-12 rounded-full bg-brand-green text-white hover:bg-brand-green-dark transition-all duration-500 shadow-glow-green" title="Ligar para a loja">
+                            <div class="w-12 h-12 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone text-sm transition-transform duration-300 group-hover:rotate-12"></i>
+                            </div>
+                            <div class="overflow-hidden max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pr-6 transition-all duration-500 ease-out flex items-center">
+                                <span class="font-bold text-sm tracking-wide whitespace-nowrap">233 422 208</span>
+                            </div>
+                        </a>
                     </div>
 
                 </div>
@@ -500,23 +491,6 @@
                             </div>
                         </div>
 
-                        <!-- Redes Sociais -->
-                        <div class="group flex items-start gap-4 stagger-3" style="animation-delay: 0.7s">
-                            <div class="w-8 h-8 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 shadow-sm">
-                                <i class="fa-solid fa-share-nodes text-sm"></i>
-                            </div>
-                            <div class="flex-1 pt-1">
-                                <p class="text-brand-dark font-bold text-xs uppercase tracking-wide">Redes Sociais</p>
-                                <div class="flex gap-4 mt-2">
-                                    <a href="#" target="_blank" class="w-8 h-8 rounded-lg bg-paper-100 flex items-center justify-center text-ink-500 hover:bg-brand-green hover:text-white transition-all transform hover:-translate-y-0.5 shadow-sm" title="Instagram">
-                                        <i class="fa-brands fa-instagram text-sm"></i>
-                                    </a>
-                                    <a href="#" target="_blank" class="w-8 h-8 rounded-lg bg-paper-100 flex items-center justify-center text-ink-500 hover:bg-brand-green hover:text-white transition-all transform hover:-translate-y-0.5 shadow-sm" title="Facebook">
-                                        <i class="fa-brands fa-facebook-f text-sm"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Full Color Interactive Google Map -->
@@ -602,9 +576,22 @@
     </footer>
 
     <!-- Mobile Floating Action Button for Calls -->
-    <a href="tel:+351233422208" class="md:hidden fixed bottom-8 right-5 z-50 w-14 h-14 bg-brand-green text-white rounded-full flex items-center justify-center shadow-glow-green hover:bg-brand-green-dark transition-all transform hover:-translate-y-1 active:scale-95" title="Ligar para a loja">
-        <i class="fa-solid fa-phone text-xl"></i>
+    <a href="tel:+351233422208" class="md:hidden fixed bottom-12 right-3 z-50 w-10 h-10 bg-brand-green text-white rounded-full flex items-center justify-center shadow-glow-green hover:bg-brand-green-dark transition-all transform hover:-translate-y-1 active:scale-95" title="Ligar para a loja">
+        <i class="fa-solid fa-phone text-base"></i>
     </a>
+
+    <!-- Mobile Floating Social Sidebar -->
+    <div class="md:hidden fixed top-28 right-3 z-50 flex flex-col gap-1.5">
+        <a href="https://www.instagram.com/papelaria_lusitana/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/70 backdrop-blur-md border border-paper-200/50 shadow-sm flex items-center justify-center text-ink-600 hover:bg-brand-green hover:text-white transition-all hover:scale-105" title="Instagram">
+            <i class="fa-brands fa-instagram text-base"></i>
+        </a>
+        <a href="https://www.facebook.com/p/Papelaria-Lusitana-61553250991238/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/70 backdrop-blur-md border border-paper-200/50 shadow-sm flex items-center justify-center text-ink-600 hover:bg-brand-green hover:text-white transition-all hover:scale-105" title="Facebook">
+            <i class="fa-brands fa-facebook-f text-base"></i>
+        </a>
+        <a href="mailto:papelarialusitana@gmail.com" class="w-9 h-9 rounded-full bg-white/70 backdrop-blur-md border border-paper-200/50 shadow-sm flex items-center justify-center text-ink-600 hover:bg-brand-green hover:text-white transition-all hover:scale-105" title="Email">
+            <i class="fa-solid fa-envelope text-base"></i>
+        </a>
+    </div>
 
     <!-- Application Script -->
     <script src="js/app.js"></script>
