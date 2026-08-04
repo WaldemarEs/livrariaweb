@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livraria e Papelaria Lusitana — Figueira da Foz</title>
+    <meta name="description" content="A sua livraria e papelaria de confiança na Figueira da Foz desde 1933. Reconhecida pelo programa 'Comércio com História'.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind CSS Custom Configuration -->
+    <script src="js/tailwind.config.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=block" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- External Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-paper-50 text-ink-900 font-sans antialiased h-screen h-[100dvh] overflow-hidden flex flex-col justify-between relative selection:bg-brand-green-light selection:text-brand-green-dark">
+
+    <!-- Glowing Background Ambient Orbs -->
+    <div class="absolute top-[-10%] left-[-5%] w-[450px] h-[450px] bg-brand-green-glow rounded-full blur-[110px] pointer-events-none animate-blob-slow"></div>
+    <div class="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-brand-orange-glow rounded-full blur-[130px] pointer-events-none animate-blob-reverse"></div>
+    <div class="absolute top-[40%] right-[15%] w-[300px] h-[300px] bg-brand-green-glow/50 rounded-full blur-[90px] pointer-events-none animate-blob-slow"></div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-paper-200/80 shrink-0 transition-all">
+        <div class="max-w-6xl mx-auto px-5 py-2.5 flex items-center justify-between">
+            <!-- Brand Logo Button -->
+            <button onclick="switchView('inicio')" class="flex items-center gap-3 group text-left focus:outline-none">
+                <!-- High Precision Vector Reproduction of Lusitana Book Mark -->
+                <svg viewBox="0 0 200 200" class="h-10 sm:h-12 w-auto transition-transform group-hover:scale-105 drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="rightPageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#B8D373" />
+                            <stop offset="60%" stop-color="#DCEBB3" />
+                            <stop offset="100%" stop-color="#EDF5D9" />
+                        </linearGradient>
+                        <linearGradient id="centerPageGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#7B933C" />
+                            <stop offset="70%" stop-color="#A1BE50" />
+                            <stop offset="100%" stop-color="#C5DF79" />
+                        </linearGradient>
+                        <linearGradient id="orangeRibbonGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#E88923" />
+                            <stop offset="100%" stop-color="#FFA842" />
+                        </linearGradient>
+                        <filter id="softShadow" x="-10%" y="-10%" width="130%" height="130%">
+                            <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#1A1A1A" flood-opacity="0.1" />
+                        </filter>
+                    </defs>
+
+                    <g filter="url(#softShadow)">
+                        <path d="M 92 148 C 62 138 38 136 26 145 C 38 125 50 106 58 98 C 68 95 82 98 92 105 Z" 
+                              fill="#FFFFFF" stroke="#2B2B2B" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M 92 148 C 112 140 142 140 174 148 C 162 118 135 106 92 105 Z" 
+                              fill="url(#rightPageGrad)" stroke="#2B2B2B" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M 92 148 C 88 95 84 45 96 30 C 105 52 96 108 174 148 Z" 
+                              fill="url(#centerPageGrad)" stroke="#2B2B2B" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M 44 122 C 48 78 68 62 95 72" 
+                              stroke="url(#orangeRibbonGrad)" stroke-width="6" stroke-linecap="round" fill="none"/>
+                    </g>
+                </svg>
+
+                <div class="flex flex-col justify-center">
+                    <span class="font-serif font-bold text-xl sm:text-2xl tracking-tight text-brand-dark leading-none -mb-0.5">LUSITANA</span>
+                    <span class="font-brand text-[10px] sm:text-[11px] font-normal text-brand-green tracking-normal lowercase leading-none">papelaria livraria</span>
+                    <span class="font-brand text-[7.5px] sm:text-[8.5px] font-bold text-brand-green tracking-[0.2em] uppercase mt-[2px] leading-none">FIGUEIRA DA FOZ</span>
+                </div>
+            </button>
+
+            <!-- Navigation Links -->
+            <nav class="hidden sm:flex items-center gap-6">
+                <button onclick="switchView('inicio')" id="tab-inicio-desktop" class="nav-tab active text-sm font-semibold uppercase tracking-wider text-ink-500 transition-colors duration-200 hover:text-brand-green">
+                    Início
+                </button>
+                <button onclick="switchView('historia')" id="tab-historia-desktop" class="nav-tab text-sm font-semibold uppercase tracking-wider text-ink-500 transition-colors duration-200 hover:text-brand-green">
+                    Sobre Nós
+                </button>
+                <button onclick="switchView('servicios')" id="tab-servicios-desktop" class="nav-tab text-sm font-semibold uppercase tracking-wider text-ink-500 transition-colors duration-200 hover:text-brand-green">
+                    Serviços
+                </button>
+                <button onclick="switchView('contacto')" id="tab-contacto-desktop" class="nav-tab text-sm font-semibold uppercase tracking-wider text-ink-500 transition-colors duration-200 hover:text-brand-green">
+                    Contacto
+                </button>
+            </nav>
+
+            <!-- Badges & Status -->
+            <div class="flex items-center gap-2.5 sm:gap-4">
+                <!-- Google Reviews -->
+                <div class="hidden md:flex items-center gap-1.5 group relative transition-colors" title="Avaliações no Google">
+                    <span class="text-brand-orange text-[12px] relative z-10"><i class="fa-solid fa-star"></i></span>
+                    <span class="text-[12px] font-bold text-brand-dark relative z-10">4.8</span>
+                    <span class="text-[11px] font-medium text-ink-500 relative z-10">Google</span>
+                    <span class="absolute bottom-0 left-0 w-full h-1.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                </div>
+
+                <!-- Live Opening Status Tooltip -->
+                <div class="tooltip-trigger">
+                    <span id="store-status-badge" class="inline-flex items-center gap-1.5 text-[12px] relative cursor-help group transition-colors">
+                        <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse relative z-10"></span>
+                        <span class="font-semibold text-brand-dark relative z-10">Aberto Agora</span>
+                        <span class="absolute bottom-0 left-0 w-full h-1.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                    </span>
+                    <!-- Tooltip Content -->
+                    <div class="tooltip-content w-56 bg-white/95 backdrop-blur-md rounded-xl border border-paper-200 shadow-xl p-3 text-left">
+                        <div class="space-y-2 text-xs">
+                            <div class="border-b border-paper-100 pb-2">
+                                <span class="font-bold text-brand-dark block text-[10px] uppercase tracking-wider mb-1">Horário de Hoje</span>
+                                <div class="flex justify-between text-ink-700"><span>Aberto:</span> <span class="font-medium">09:00 - 13:00</span></div>
+                                <div class="flex justify-between text-ink-700"><span>Reabre:</span> <span class="font-medium">15:00 - 19:00</span></div>
+                            </div>
+                            <div class="flex items-start gap-1.5 text-ink-500">
+                                <i class="fa-solid fa-location-dot mt-0.5 text-brand-green"></i>
+                                <span class="text-[10px] leading-tight">Rua da República 224,<br>Figueira da Foz</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="tel:+351233422208" class="hidden md:inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-green-light text-brand-green hover:bg-brand-green hover:text-white transition-all shadow-sm" title="Ligar para a loja">
+                    <i class="fa-solid fa-phone text-xs"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="sm:hidden flex justify-around border-t border-paper-200/70 py-2 text-[10.5px] uppercase tracking-wider font-semibold text-ink-500 bg-white/80 backdrop-blur-md">
+            <button onclick="switchView('inicio')" id="tab-inicio-mobile" class="nav-tab active px-2 py-1 rounded-lg">Início</button>
+            <button onclick="switchView('historia')" id="tab-historia-mobile" class="nav-tab px-2 py-1 rounded-lg">História</button>
+            <button onclick="switchView('servicios')" id="tab-servicios-mobile" class="nav-tab px-2 py-1 rounded-lg">Serviços</button>
+            <button onclick="switchView('contacto')" id="tab-contacto-mobile" class="nav-tab px-2 py-1 rounded-lg">Contacto</button>
+        </div>
+    </header>
+
+    <!-- Main Viewport Content Area -->
+    <main id="main-viewport-container" class="flex-1 w-full max-w-6xl mx-auto px-5 overflow-y-auto custom-scrollbar min-h-0 relative z-10">
+
+        <!-- VIEW 1: INÍCIO -->
+        <section id="view-inicio" class="view-section active py-6 sm:py-10 lg:py-16">
+            <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center py-2">
+                
+                <!-- Left Hero Column -->
+                <div class="lg:col-span-8 space-y-4 sm:space-y-5">
+                    <div class="flex flex-wrap items-center gap-4 sm:gap-6 pb-2 sm:pb-3 stagger-1">
+                        <!-- Sello Desde 1933 -->
+                        <div class="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rotate-[-8deg] hover:rotate-0 transition-transform duration-300">
+                            <svg viewBox="0 0 100 100" class="w-full h-full text-brand-green drop-shadow-md">
+                                <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 2" />
+                                <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="1" />
+                                <path d="M20 50 A 30 30 0 0 1 80 50" id="curve" fill="transparent" />
+                                <text class="font-serif font-bold text-[14.5px]" fill="currentColor" letter-spacing="2">
+                                    <textPath href="#curve" startOffset="50%" text-anchor="middle">LUSITANA</textPath>
+                                </text>
+                                <text x="50" y="64" font-family="Montserrat" font-size="9" font-weight="bold" fill="currentColor" text-anchor="middle">DESDE</text>
+                                <text x="50" y="78" font-family="Playfair Display" font-size="16" font-weight="bold" fill="currentColor" text-anchor="middle">1933</text>
+                            </svg>
+                        </div>
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-[11px] font-bold shadow-sm h-fit">
+                            <i class="fa-solid fa-ribbon"></i>
+                            <span>Comércio com História</span>
+                        </div>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-[2.8rem] xl:text-[3.2rem] font-serif font-bold text-brand-dark leading-[1.2] tracking-tight stagger-2">
+                        A sua livraria e papelaria de confiança em 
+                        <span class="relative inline-block whitespace-nowrap">
+                            <span class="relative z-10">Figueira da Foz</span>
+                            <span class="absolute bottom-1 sm:bottom-2 left-0 w-full h-3 sm:h-4 bg-brand-green/30 -z-0 -rotate-1 rounded-sm"></span>
+                        </span>.
+                    </h1>
+
+                    <p class="text-xs sm:text-sm text-ink-700 font-normal leading-relaxed text-justify max-w-xl stagger-3">
+                        Um espaço histórico dedicado à literatura, imprensa, material escolar e de escritório com atendimento próximo e personalizado.
+                    </p>
+
+                    <div class="flex flex-wrap gap-6 sm:gap-8 pt-3 stagger-4">
+                        <button onclick="switchView('contacto')" class="group flex items-center gap-2.5 text-brand-dark transition-colors cursor-pointer">
+                            <i class="fa-regular fa-clipboard text-brand-orange text-lg"></i>
+                            <span class="font-serif font-bold text-xl tracking-tight relative inline-block">
+                                <span class="relative z-10">Formulário Rápido</span>
+                                <span class="absolute bottom-1.5 left-0 w-full h-2.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                            </span>
+                        </button>
+                        <button onclick="switchView('historia')" class="group flex items-center gap-2.5 text-brand-dark transition-colors cursor-pointer">
+                            <span class="font-serif font-bold text-xl tracking-tight relative inline-block">
+                                <span class="relative z-10">Nossa História</span>
+                                <span class="absolute bottom-1.5 left-0 w-full h-2.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                            </span>
+                            <i class="fa-solid fa-landmark text-sm text-brand-green"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Feature Cards Column -->
+                <div class="lg:col-span-4 grid gap-3.5 sm:gap-4">
+                    
+                    <!-- Puntos Clave Sutiles -->
+                    <div class="flex flex-col gap-8 sm:gap-10 pt-4 sm:pt-6 lg:pl-14 relative">
+                        <!-- Línea decorativa sutil -->
+                        <div class="hidden lg:block absolute left-0 top-8 bottom-4 w-px bg-gradient-to-b from-brand-green/30 via-brand-green/10 to-transparent"></div>
+                        
+                        <!-- Punto 01 -->
+                        <div onclick="switchView('servicios')" class="group flex items-start gap-5 cursor-pointer relative stagger-5">
+                            <i class="fa-solid fa-book-open absolute -left-6 -top-4 text-[75px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                            <div class="w-8 h-8 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center text-xs shrink-0 relative z-10 transition-all duration-300 group-hover:bg-brand-orange group-hover:text-white shadow-sm mt-1">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <div class="relative z-10 flex-1">
+                                <h3 class="font-serif font-bold text-lg tracking-tight text-brand-dark transition-colors inline-block relative">
+                                    <span class="relative z-10">Livraria & Imprensa</span>
+                                    <span class="absolute bottom-1 left-0 w-full h-2.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                                </h3>
+                                <p class="text-xs text-ink-500 mt-2 leading-relaxed max-w-xs">Novidades editoriais, literatura portuguesa, escolares e imprensa diária.</p>
+                            </div>
+                        </div>
+
+                        <!-- Punto 02 -->
+                        <div onclick="switchView('servicios')" class="group flex items-start gap-5 cursor-pointer relative stagger-5" style="animation-delay: 0.6s">
+                            <i class="fa-solid fa-pen-ruler absolute -left-6 -top-4 text-[75px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                            <div class="w-8 h-8 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center text-xs shrink-0 relative z-10 transition-all duration-300 group-hover:bg-brand-green group-hover:text-white shadow-sm mt-1">
+                                <i class="fa-solid fa-pen-ruler"></i>
+                            </div>
+                            <div class="relative z-10 flex-1">
+                                <h3 class="font-serif font-bold text-lg tracking-tight text-brand-dark transition-colors inline-block relative">
+                                    <span class="relative z-10">Papelaria Escolar</span>
+                                    <span class="absolute bottom-1 left-0 w-full h-2.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                                </h3>
+                                <p class="text-xs text-ink-500 mt-2 leading-relaxed max-w-xs">Material completo para estudantes, belas artes e produtos de escritório.</p>
+                            </div>
+                        </div>
+
+                        <!-- Punto 03 -->
+                        <div onclick="switchView('contacto')" class="group flex items-start gap-5 cursor-pointer relative stagger-5" style="animation-delay: 0.7s">
+                            <i class="fa-regular fa-bell absolute -left-6 -top-4 text-[75px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                            <div class="w-8 h-8 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center text-xs shrink-0 relative z-10 transition-all duration-300 group-hover:bg-brand-orange group-hover:text-white shadow-sm mt-1">
+                                <i class="fa-regular fa-bell"></i>
+                            </div>
+                            <div class="relative z-10 flex-1">
+                                <h3 class="font-serif font-bold text-lg tracking-tight text-brand-dark transition-colors inline-block relative">
+                                    <span class="relative z-10">Encomendas Especiais</span>
+                                    <span class="absolute bottom-1 left-0 w-full h-2.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                                </h3>
+                                <p class="text-xs text-ink-500 mt-2 leading-relaxed max-w-xs">Pesquisa e reserva de livros com aviso rápido assim que chegarem.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VIEW 2: SOBRE NÓS / HISTÓRIA -->
+        <section id="view-historia" class="view-section py-6 sm:py-10">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                
+                <!-- Left: The Story -->
+                <div class="space-y-5">
+                    <div class="space-y-2">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-orange/10 text-brand-orange text-xs font-bold uppercase tracking-wider shadow-sm stagger-1">
+                            <i class="fa-solid fa-ribbon"></i>
+                            <span>Comércio com História · Selo Oficial</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-[2.5rem] font-serif font-extrabold text-brand-dark leading-[1.1] tracking-tight text-balance stagger-2">Um legado cultural desde 1933</h2>
+                    </div>
+
+                    <p class="text-sm sm:text-base text-ink-700 leading-relaxed font-medium text-justify stagger-3">
+                        A <strong>Livraria e Papelaria Lusitana</strong> não é apenas uma loja, é um pedaço vivo da história da Figueira da Foz. Inaugurada a <strong>17 de agosto de 1933</strong>, tem acompanhado as transformações da cidade ao longo de mais de 9 décadas.
+                    </p>
+                    
+                    <p class="text-xs sm:text-sm text-ink-500 leading-relaxed text-justify stagger-4">
+                        Fundada pela família Oliveira Cardoso de Brenha, mantemos o compromisso inabalável com a cultura e educação. As nossas prateleiras guardam memórias, e o atendimento preserva o calor humano que só o comércio tradicional pode oferecer.
+                    </p>
+                </div>
+
+                <!-- Right: Highlights -->
+                <div class="flex flex-col gap-2 sm:gap-4 relative mt-4 lg:mt-0 lg:pl-10">
+                    <!-- Línea decorativa sutil -->
+                    <div class="hidden lg:block absolute left-4 top-4 bottom-4 w-px bg-gradient-to-b from-brand-green/20 via-brand-green/10 to-transparent"></div>
+
+                    <div class="group flex items-start gap-5 relative stagger-5" style="animation-delay: 0.5s">
+                        <i class="fa-solid fa-calendar-check absolute -left-2 -top-2 text-[60px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                        <div class="w-8 h-8 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center text-xs shrink-0 relative z-10 transition-all duration-300 shadow-sm mt-1">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <div class="relative z-10 flex-1">
+                            <h4 class="font-serif font-bold text-lg tracking-tight text-brand-dark transition-colors inline-block relative">
+                                <span class="relative z-10">90+ Anos de História</span>
+                                <span class="absolute bottom-1 left-0 w-full h-2.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                            </h4>
+                            <p class="text-xs text-ink-500 mt-1.5 leading-relaxed max-w-xs">Uma das lojas mais antigas da região em funcionamento contínuo.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="group flex items-start gap-5 relative stagger-5" style="animation-delay: 0.65s">
+                        <i class="fa-solid fa-archway absolute -left-2 -top-2 text-[60px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                        <div class="w-8 h-8 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center text-xs shrink-0 relative z-10 transition-all duration-300 shadow-sm mt-1">
+                            <i class="fa-solid fa-archway"></i>
+                        </div>
+                        <div class="relative z-10 flex-1">
+                            <h4 class="font-serif font-bold text-lg tracking-tight text-brand-dark transition-colors inline-block relative">
+                                <span class="relative z-10">Fachada Original</span>
+                                <span class="absolute bottom-1 left-0 w-full h-2.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                            </h4>
+                            <p class="text-xs text-ink-500 mt-1.5 leading-relaxed max-w-xs">Preservamos a icónica inscrição "LIVRARIA LUSITANA" dos anos 30.</p>
+                        </div>
+                    </div>
+
+                    <div class="group flex items-start gap-5 relative stagger-5" style="animation-delay: 0.8s">
+                        <i class="fa-solid fa-book-open-reader absolute -left-2 -top-2 text-[60px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                        <div class="w-8 h-8 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center text-xs shrink-0 relative z-10 transition-all duration-300 shadow-sm mt-1">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                        </div>
+                        <div class="relative z-10 flex-1">
+                            <h4 class="font-serif font-bold text-lg tracking-tight text-brand-dark transition-colors inline-block relative">
+                                <span class="relative z-10">Cultura e Tradição</span>
+                                <span class="absolute bottom-1 left-0 w-full h-2.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                            </h4>
+                            <p class="text-xs text-ink-500 mt-1.5 leading-relaxed max-w-xs">Um espaço de encontro para apaixonados por leitura e escrita.</p>
+                        </div>
+                    </div>
+
+                    <div class="group flex items-start gap-5 relative stagger-5" style="animation-delay: 0.95s">
+                        <i class="fa-solid fa-handshake-angle absolute -left-2 -top-2 text-[60px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                        <div class="w-8 h-8 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center text-xs shrink-0 relative z-10 transition-all duration-300 shadow-sm mt-1">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <div class="relative z-10 flex-1">
+                            <h4 class="font-serif font-bold text-lg tracking-tight text-brand-dark transition-colors inline-block relative">
+                                <span class="relative z-10">Atendimento Próximo</span>
+                                <span class="absolute bottom-1 left-0 w-full h-2.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                            </h4>
+                            <p class="text-xs text-ink-500 mt-1.5 leading-relaxed max-w-xs">Conhecemos os nossos clientes pelo nome e gostos literários.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VIEW 3: SERVIÇOS -->
+        <section id="view-servicios" class="view-section space-y-4 sm:space-y-6 py-6 sm:py-10">
+            <div class="max-w-xl space-y-1">
+                <span class="text-[11px] uppercase tracking-widest text-brand-green font-bold block stagger-1">Os Nossos Serviços</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-dark stagger-2">Atendimento Personalizado & Soluções</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 sm:gap-10 lg:gap-12 pt-4 lg:px-4">
+                
+                <!-- Service 1 -->
+                <div class="group flex items-start gap-5 relative stagger-5" style="animation-delay: 0.3s">
+                    <i class="fa-solid fa-book absolute -left-4 -top-2 text-[65px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                    <div class="w-10 h-10 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center text-sm shrink-0 relative z-10 transition-transform duration-300 group-hover:scale-110 shadow-sm mt-1">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <div class="relative z-10 flex-1">
+                        <h3 class="font-serif font-bold text-xl tracking-tight text-brand-dark transition-colors inline-block relative">
+                            <span class="relative z-10">Pesquisa & Encomenda</span>
+                            <span class="absolute bottom-1 left-0 w-full h-3 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                        </h3>
+                        <p class="text-xs text-ink-500 mt-2.5 leading-relaxed text-justify">
+                            Procura uma edição específica, um autor difícil de encontrar ou um livro fora de stock? A nossa equipa encarrega-se de contactar diretamente as editoras e fornecedores para trazer a obra até às suas mãos, sem custos adicionais de pesquisa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group flex items-start gap-5 relative stagger-5" style="animation-delay: 0.4s">
+                    <i class="fa-solid fa-pen-ruler absolute -left-4 -top-2 text-[65px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                    <div class="w-10 h-10 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center text-sm shrink-0 relative z-10 transition-transform duration-300 group-hover:scale-110 shadow-sm mt-1">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                    </div>
+                    <div class="relative z-10 flex-1">
+                        <h3 class="font-serif font-bold text-xl tracking-tight text-brand-dark transition-colors inline-block relative">
+                            <span class="relative z-10">Listas Escolares</span>
+                            <span class="absolute bottom-1 left-0 w-full h-3 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                        </h3>
+                        <p class="text-xs text-ink-500 mt-2.5 leading-relaxed text-justify">
+                            Facilitamos o seu regresso às aulas preparando todo o material escolar e manuais para qualquer ano letivo. Entregue-nos a sua lista e nós tratamos de reunir tudo com rapidez, organização e a máxima comodidade para si e para a sua família.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group flex items-start gap-5 relative stagger-5" style="animation-delay: 0.5s">
+                    <i class="fa-solid fa-print absolute -left-4 -top-2 text-[65px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                    <div class="w-10 h-10 rounded-full bg-brand-orange/10 text-brand-orange flex items-center justify-center text-sm shrink-0 relative z-10 transition-transform duration-300 group-hover:scale-110 shadow-sm mt-1">
+                        <i class="fa-solid fa-print"></i>
+                    </div>
+                    <div class="relative z-10 flex-1">
+                        <h3 class="font-serif font-bold text-xl tracking-tight text-brand-dark transition-colors inline-block relative">
+                            <span class="relative z-10">Cópias e Impressões</span>
+                            <span class="absolute bottom-1 left-0 w-full h-3 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                        </h3>
+                        <p class="text-xs text-ink-500 mt-2.5 leading-relaxed text-justify">
+                            Dispomos de um serviço rápido e prático de fotocópias, impressões a cores e a preto e branco de alta qualidade. Fazemos também encadernações a espiral e digitalização de documentos importantes para facilitar o seu dia a dia profissional e académico.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group flex items-start gap-5 relative stagger-5" style="animation-delay: 0.6s">
+                    <i class="fa-solid fa-palette absolute -left-4 -top-2 text-[65px] text-brand-green/5 select-none transition-transform duration-500 group-hover:scale-105 pointer-events-none z-0"></i>
+                    <div class="w-10 h-10 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center text-sm shrink-0 relative z-10 transition-transform duration-300 group-hover:scale-110 shadow-sm mt-1">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <div class="relative z-10 flex-1">
+                        <h3 class="font-serif font-bold text-xl tracking-tight text-brand-dark transition-colors inline-block relative">
+                            <span class="relative z-10">Material de Arte</span>
+                            <span class="absolute bottom-1 left-0 w-full h-3 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                        </h3>
+                        <p class="text-xs text-ink-500 mt-2.5 leading-relaxed text-justify">
+                            Oferecemos uma vasta gama de materiais para os mais criativos: desde cadernos de esboço premium, tintas acrílicas e aguarelas, a pincéis, canetas técnicas e material de escritório especializado para arquitetura, belas-artes e design.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VIEW 4: CONTACTO & ENCOMENDAS -->
+        <section id="view-contacto" class="view-section py-2 sm:py-6">
+            <div class="grid lg:grid-cols-12 gap-6 items-center">
+                
+                <!-- Contact Info & Full Color Map Column -->
+                <div class="lg:col-span-5 space-y-3.5">
+                    <div>
+                        <span class="text-[11px] uppercase tracking-widest text-brand-green font-bold block mb-0.5 stagger-1" style="animation-delay: 0.1s">Contacto</span>
+                        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-brand-dark stagger-2" style="animation-delay: 0.2s">Visite-nos ou fale connosco</h2>
+                    </div>
+
+                    <div class="flex flex-col gap-4 pt-2">
+                        <!-- Address -->
+                        <div class="group flex items-start gap-4 stagger-3" style="animation-delay: 0.3s">
+                            <div class="w-8 h-8 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+                                <i class="fa-solid fa-location-dot text-sm"></i>
+                            </div>
+                            <div class="flex-1 pt-1">
+                                <p class="text-brand-dark font-bold text-xs uppercase tracking-wide">Morada</p>
+                                <p class="text-ink-500 text-xs mt-1">Rua da República 224, Figueira da Foz</p>
+                            </div>
+                        </div>
+
+                        <!-- Phones -->
+                        <div class="group flex items-start gap-4 stagger-3" style="animation-delay: 0.4s">
+                            <div class="w-8 h-8 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+                                <i class="fa-solid fa-phone text-sm"></i>
+                            </div>
+                            <div class="flex-1 pt-1">
+                                <p class="text-brand-dark font-bold text-xs uppercase tracking-wide">Telefones</p>
+                                <div class="text-ink-500 text-xs mt-1 space-x-2 sm:space-x-3">
+                                    <a href="tel:+351930505242" class="hover:text-brand-green transition-colors">+351 930 505 242</a>
+                                    <span class="text-ink-300 font-normal">|</span>
+                                    <a href="tel:+351233422208" class="hover:text-brand-green transition-colors">+351 233 422 208</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="group flex items-start gap-4 stagger-3" style="animation-delay: 0.5s">
+                            <div class="w-8 h-8 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+                                <i class="fa-solid fa-envelope text-sm"></i>
+                            </div>
+                            <div class="flex-1 pt-1">
+                                <p class="text-brand-dark font-bold text-xs uppercase tracking-wide">Email</p>
+                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=papelarialusitana@gmail.com" target="_blank" rel="noopener noreferrer" class="text-ink-500 text-xs mt-1 block hover:text-brand-green transition-colors">papelarialusitana@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Schedule -->
+                        <div class="group flex items-start gap-4 stagger-3" style="animation-delay: 0.6s">
+                            <div class="w-8 h-8 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+                                <i class="fa-solid fa-clock text-sm"></i>
+                            </div>
+                            <div class="flex-1 pt-1">
+                                <p class="text-brand-dark font-bold text-xs uppercase tracking-wide">Horário</p>
+                                <div class="w-full text-xs text-ink-500 mt-1 flex flex-col sm:flex-row sm:justify-between sm:pr-8">
+                                    <span>Seg-Sex: <span class="font-bold text-brand-dark">09:00–13:00 / 15:00–19:00</span></span>
+                                    <span>Sáb: <span class="font-bold text-brand-dark">09:00–13:00</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Full Color Interactive Google Map -->
+                    <div class="h-24 sm:h-32 lg:h-40 rounded-2xl overflow-hidden border border-paper-200/90 shadow-sm glass-panel relative group mt-2 stagger-4" style="animation-delay: 0.7s">
+                        <iframe 
+                            title="Ubicación Papelaria Lusitana"
+                            src="https://maps.google.com/maps?q=Papelaria%20Lusitana,%20Figueira%20da%20Foz&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                            class="w-full h-full border-0 transition-all duration-300" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="lg:col-span-7 lg:pl-6 stagger-5" style="animation-delay: 0.8s">
+                    <h3 class="font-serif font-bold text-xl sm:text-2xl text-brand-dark mb-0.5">Contacte-nos</h3>
+                    <p class="text-xs text-ink-500 mb-4">Envie-nos uma mensagem, questão ou encomenda. Responderemos brevemente.</p>
+
+                    <!-- Contact Form -->
+                    <form id="contact-form" action="https://formsubmit.co/papelarialusitana@gmail.com" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-2.5">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="Novo Contacto - Papelaria Lusitana">
+
+                        <div class="grid sm:grid-cols-2 gap-3.5">
+                            <div>
+                                <label class="block text-[10px] uppercase tracking-wider font-bold text-brand-dark mb-1">Nome</label>
+                                <input type="text" name="nome" required placeholder="O seu nome" class="w-full bg-paper-50/90 border border-paper-200/90 rounded-xl px-3.5 py-2 text-xs text-ink-900 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase tracking-wider font-bold text-brand-dark mb-1">Telefone / Email</label>
+                                <input type="text" name="contacto" required placeholder="Como podemos responder?" class="w-full bg-paper-50/90 border border-paper-200/90 rounded-xl px-3.5 py-2 text-xs text-ink-900 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-wider font-bold text-brand-dark mb-1">Motivo do Contacto</label>
+                            <select name="motivo" class="w-full bg-paper-50/90 border border-paper-200/90 rounded-xl px-3.5 py-2 text-xs text-ink-900 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all appearance-none cursor-pointer">
+                                <option value="Informação Geral">Informação Geral</option>
+                                <option value="Reserva de Livro/Material">Reserva de Livro / Material</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-wider font-bold text-brand-dark mb-1">Mensagem</label>
+                            <textarea name="mensagem" rows="2" required placeholder="Escreva aqui a sua mensagem ou pedido..." class="w-full bg-paper-50/90 border border-paper-200/90 rounded-xl px-3.5 py-2 text-xs text-ink-900 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 transition-all resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-green hover:bg-brand-green-dark text-white font-bold text-xs uppercase tracking-wider py-3 rounded-xl transition-all duration-200 shadow-glow-green transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+                            <span>Enviar Mensagem</span>
+                        </button>
+                    </form>
+
+                    <div id="form-success" class="hidden text-center py-6 space-y-2.5">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-green-light text-brand-green flex items-center justify-center text-xl mx-auto shadow-sm">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h4 class="font-brand font-bold text-base text-brand-dark">Mensagem Enviada com Sucesso</h4>
+                        <p class="text-xs text-ink-500">Agradecemos o seu contacto. Responderemos o mais breve possível.</p>
+                        <button onclick="resetForm()" class="text-xs text-brand-green font-bold hover:underline pt-1 block mx-auto">Enviar nova mensagem</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Status Bar -->
+    <footer class="z-40 shrink-0 border-t border-paper-200/80 bg-white/70 backdrop-blur-md">
+        <!-- Status Bar -->
+        <div class="py-2.5 px-6 text-[10px] sm:text-[11px] text-ink-500">
+            <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="font-serif font-extrabold text-brand-dark tracking-tight">LUSITANA</span>
+                    <span class="text-ink-300">—</span>
+                    <span>Papelaria e Livraria na Figueira da Foz (Desde 1933)</span>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-3">
+                    <p>&copy; <span id="year"></span> Papelaria Lusitana.</p>
+                    <span class="hidden sm:block text-ink-300">|</span>
+                    <p>Desenvolvido por <a href="https://waldemarescobar.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-dark hover:text-brand-green transition-colors cursor-pointer">waldemarEs</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Floating Action Button for Calls -->
+    <a href="tel:+351233422208" class="md:hidden fixed bottom-6 right-5 z-50 w-14 h-14 bg-brand-green text-white rounded-full flex items-center justify-center shadow-glow-green hover:bg-brand-green-dark transition-all transform hover:-translate-y-1 active:scale-95" title="Ligar para a loja">
+        <i class="fa-solid fa-phone text-xl"></i>
+    </a>
+
+    <!-- Application Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>
