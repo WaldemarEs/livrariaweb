@@ -23,7 +23,7 @@
     <!-- External Custom Styles -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-paper-50 text-ink-900 font-sans antialiased h-screen h-[100dvh] overflow-hidden flex flex-col justify-between relative selection:bg-brand-green-light selection:text-brand-green-dark">
+<body class="bg-paper-50 text-ink-900 font-sans antialiased min-h-screen flex flex-col justify-between relative selection:bg-brand-green-light selection:text-brand-green-dark">
 
     <!-- Glowing Background Ambient Orbs -->
     <div class="absolute top-[-10%] left-[-5%] w-[450px] h-[450px] bg-brand-green-glow rounded-full blur-[110px] pointer-events-none animate-blob-slow"></div>
@@ -141,7 +141,7 @@
     </header>
 
     <!-- Main Viewport Content Area -->
-    <main id="main-viewport-container" class="flex-1 w-full max-w-6xl mx-auto px-5 overflow-y-auto custom-scrollbar min-h-0 relative z-10">
+    <main id="main-viewport-container" class="flex-1 w-full max-w-6xl mx-auto px-5 relative z-10">
 
         <!-- VIEW 1: INÍCIO -->
         <section id="view-inicio" class="view-section active py-6 sm:py-10 lg:py-16">
@@ -169,6 +169,24 @@
                         </div>
                     </div>
 
+                    <!-- Mobile-only buttons centered above title -->
+                    <div class="flex sm:hidden justify-center items-center gap-5 pb-3 w-full stagger-1">
+                        <button onclick="switchView('contacto')" class="group flex items-center gap-1.5 text-brand-dark transition-colors cursor-pointer">
+                            <i class="fa-regular fa-clipboard text-brand-orange text-sm"></i>
+                            <span class="font-serif font-bold text-[15px] tracking-tight relative inline-block">
+                                <span class="relative z-10">Formulário Rápido</span>
+                                <span class="absolute bottom-1 left-0 w-full h-1.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                            </span>
+                        </button>
+                        <button onclick="switchView('historia')" class="group flex items-center gap-1.5 text-brand-dark transition-colors cursor-pointer">
+                            <span class="font-serif font-bold text-[15px] tracking-tight relative inline-block">
+                                <span class="relative z-10">Nossa História</span>
+                                <span class="absolute bottom-1 left-0 w-full h-1.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
+                            </span>
+                            <i class="fa-solid fa-landmark text-xs text-brand-green"></i>
+                        </button>
+                    </div>
+
                     <h1 class="text-3xl sm:text-4xl lg:text-[2.8rem] xl:text-[3.2rem] font-serif font-bold text-brand-dark leading-[1.2] tracking-tight stagger-2">
                         A sua livraria e papelaria de confiança em 
                         <span class="relative inline-block whitespace-nowrap">
@@ -181,7 +199,8 @@
                         Um espaço histórico dedicado à literatura, imprensa, material escolar e de escritório com atendimento próximo e personalizado.
                     </p>
 
-                    <div class="flex flex-wrap gap-6 sm:gap-8 pt-3 stagger-4">
+                    <!-- Desktop buttons below description -->
+                    <div class="hidden sm:flex flex-wrap gap-6 sm:gap-8 pt-3 stagger-4">
                         <button onclick="switchView('contacto')" class="group flex items-center gap-2.5 text-brand-dark transition-colors cursor-pointer">
                             <i class="fa-regular fa-clipboard text-brand-orange text-lg"></i>
                             <span class="font-serif font-bold text-xl tracking-tight relative inline-block">
