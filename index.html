@@ -23,7 +23,7 @@
     <!-- External Custom Styles -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-paper-50 text-ink-900 font-sans antialiased min-h-screen flex flex-col justify-between relative selection:bg-brand-green-light selection:text-brand-green-dark">
+<body class="bg-paper-50 text-ink-900 font-sans antialiased h-screen h-[100dvh] overflow-hidden flex flex-col justify-between relative selection:bg-brand-green-light selection:text-brand-green-dark">
 
     <!-- Glowing Background Ambient Orbs -->
     <div class="absolute top-[-10%] left-[-5%] w-[450px] h-[450px] bg-brand-green-glow rounded-full blur-[110px] pointer-events-none animate-blob-slow"></div>
@@ -141,7 +141,16 @@
     </header>
 
     <!-- Main Viewport Content Area -->
-    <main id="main-viewport-container" class="flex-1 w-full max-w-6xl mx-auto px-5 pb-20 sm:pb-16 relative z-10">
+    <main id="main-viewport-container" class="flex-1 w-full max-w-6xl mx-auto px-5 overflow-y-auto custom-scrollbar min-h-0 relative z-10">
+
+        <!-- Persistent Global Subtitle & Socials -->
+        <div class="w-full pt-4 sm:pt-6 pb-0 flex flex-row items-center justify-between text-ink-500 select-none">
+            <span class="font-sans font-semibold text-xs sm:text-sm tracking-wide">Papelaria e Livraria na Figueira da Foz — Desde 1933.</span>
+            <div class="flex items-center gap-4 pr-1 md:mr-12">
+                <a href="#" target="_blank" class="hover:text-brand-green transition-colors" title="Instagram"><i class="fa-brands fa-instagram text-sm sm:text-base"></i></a>
+                <a href="#" target="_blank" class="hover:text-brand-green transition-colors" title="Facebook"><i class="fa-brands fa-facebook-f text-sm sm:text-base"></i></a>
+            </div>
+        </div>
 
         <!-- VIEW 1: INÍCIO -->
         <section id="view-inicio" class="view-section active py-6 sm:py-10 lg:py-16">
@@ -167,24 +176,6 @@
                             <i class="fa-solid fa-ribbon"></i>
                             <span>Comércio com História</span>
                         </div>
-                    </div>
-
-                    <!-- Mobile-only buttons centered above title -->
-                    <div class="flex sm:hidden justify-center items-center gap-5 pb-3 w-full stagger-1">
-                        <button onclick="switchView('contacto')" class="group flex items-center gap-1.5 text-brand-dark transition-colors cursor-pointer">
-                            <i class="fa-regular fa-clipboard text-brand-orange text-sm"></i>
-                            <span class="font-serif font-bold text-[15px] tracking-tight relative inline-block">
-                                <span class="relative z-10">Formulário Rápido</span>
-                                <span class="absolute bottom-1 left-0 w-full h-1.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
-                            </span>
-                        </button>
-                        <button onclick="switchView('historia')" class="group flex items-center gap-1.5 text-brand-dark transition-colors cursor-pointer">
-                            <span class="font-serif font-bold text-[15px] tracking-tight relative inline-block">
-                                <span class="relative z-10">Nossa História</span>
-                                <span class="absolute bottom-1 left-0 w-full h-1.5 bg-brand-green/30 -z-0 -rotate-1 rounded-sm scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></span>
-                            </span>
-                            <i class="fa-solid fa-landmark text-xs text-brand-green"></i>
-                        </button>
                     </div>
 
                     <h1 class="text-3xl sm:text-4xl lg:text-[2.8rem] xl:text-[3.2rem] font-serif font-bold text-brand-dark leading-[1.2] tracking-tight stagger-2">
@@ -508,6 +499,24 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Redes Sociais -->
+                        <div class="group flex items-start gap-4 stagger-3" style="animation-delay: 0.7s">
+                            <div class="w-8 h-8 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+                                <i class="fa-solid fa-share-nodes text-sm"></i>
+                            </div>
+                            <div class="flex-1 pt-1">
+                                <p class="text-brand-dark font-bold text-xs uppercase tracking-wide">Redes Sociais</p>
+                                <div class="flex gap-4 mt-2">
+                                    <a href="#" target="_blank" class="w-8 h-8 rounded-lg bg-paper-100 flex items-center justify-center text-ink-500 hover:bg-brand-green hover:text-white transition-all transform hover:-translate-y-0.5 shadow-sm" title="Instagram">
+                                        <i class="fa-brands fa-instagram text-sm"></i>
+                                    </a>
+                                    <a href="#" target="_blank" class="w-8 h-8 rounded-lg bg-paper-100 flex items-center justify-center text-ink-500 hover:bg-brand-green hover:text-white transition-all transform hover:-translate-y-0.5 shadow-sm" title="Facebook">
+                                        <i class="fa-brands fa-facebook-f text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Full Color Interactive Google Map -->
@@ -579,16 +588,11 @@
     </main>
 
     <!-- Footer Status Bar -->
-    <footer class="fixed bottom-0 left-0 w-full z-40 border-t border-paper-200/80 bg-white/70 backdrop-blur-md pb-[env(safe-area-inset-bottom)]">
+    <footer class="z-40 shrink-0 border-t border-paper-200/80 bg-white/70 backdrop-blur-md pb-[env(safe-area-inset-bottom)] pb-3 sm:pb-0">
         <!-- Status Bar -->
-        <div class="py-2.5 px-6 text-[10px] sm:text-[11px] text-ink-500">
-            <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-                <div class="flex items-center gap-2">
-                    <span class="font-serif font-extrabold text-brand-dark tracking-tight">LUSITANA</span>
-                    <span class="text-ink-300">—</span>
-                    <span>Papelaria e Livraria na Figueira da Foz (Desde 1933)</span>
-                </div>
-                <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-3">
+        <div class="py-2.5 px-4 sm:px-6 text-[10px] sm:text-[11px] text-ink-500">
+            <div class="max-w-6xl mx-auto flex flex-row justify-center items-center">
+                <div class="flex flex-row items-center justify-center flex-wrap gap-1 sm:gap-3 w-full">
                     <p>&copy; <span id="year"></span> Papelaria Lusitana.</p>
                     <span class="hidden sm:block text-ink-300">|</span>
                     <p>Desenvolvido por <a href="https://waldemarescobar.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-dark hover:text-brand-green transition-colors cursor-pointer">waldemarEs</a></p>
@@ -598,7 +602,7 @@
     </footer>
 
     <!-- Mobile Floating Action Button for Calls -->
-    <a href="tel:+351233422208" class="md:hidden fixed bottom-24 right-5 z-50 w-14 h-14 bg-brand-green text-white rounded-full flex items-center justify-center shadow-glow-green hover:bg-brand-green-dark transition-all transform hover:-translate-y-1 active:scale-95" title="Ligar para a loja">
+    <a href="tel:+351233422208" class="md:hidden fixed bottom-8 right-5 z-50 w-14 h-14 bg-brand-green text-white rounded-full flex items-center justify-center shadow-glow-green hover:bg-brand-green-dark transition-all transform hover:-translate-y-1 active:scale-95" title="Ligar para a loja">
         <i class="fa-solid fa-phone text-xl"></i>
     </a>
 
