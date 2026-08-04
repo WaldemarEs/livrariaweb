@@ -147,6 +147,15 @@ function updateStoreStatus() {
     }
 }
 
+// --- Mobile Viewport Height Fix ---
+// Fixes the 100vh issue on mobile browsers with dynamic toolbars
+const appHeight = () => {
+    document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+};
+window.addEventListener('resize', appHeight);
+window.addEventListener('orientationchange', appHeight);
+appHeight();
+
 // Initialize on page load
 window.addEventListener('DOMContentLoaded', () => {
     updateStoreStatus();
