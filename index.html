@@ -141,7 +141,7 @@
     </header>
 
     <!-- Main Viewport Content Area -->
-    <main id="main-viewport-container" class="flex-1 w-full max-w-6xl mx-auto px-5 relative z-10">
+    <main id="main-viewport-container" class="flex-1 w-full max-w-6xl mx-auto px-5 pb-20 sm:pb-16 relative z-10">
 
         <!-- VIEW 1: INÍCIO -->
         <section id="view-inicio" class="view-section active py-6 sm:py-10 lg:py-16">
@@ -579,7 +579,7 @@
     </main>
 
     <!-- Footer Status Bar -->
-    <footer class="z-40 shrink-0 border-t border-paper-200/80 bg-white/70 backdrop-blur-md">
+    <footer class="fixed bottom-0 left-0 w-full z-40 border-t border-paper-200/80 bg-white/70 backdrop-blur-md pb-[env(safe-area-inset-bottom)]">
         <!-- Status Bar -->
         <div class="py-2.5 px-6 text-[10px] sm:text-[11px] text-ink-500">
             <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
@@ -598,7 +598,7 @@
     </footer>
 
     <!-- Mobile Floating Action Button for Calls -->
-    <a href="tel:+351233422208" class="md:hidden fixed bottom-6 right-5 z-50 w-14 h-14 bg-brand-green text-white rounded-full flex items-center justify-center shadow-glow-green hover:bg-brand-green-dark transition-all transform hover:-translate-y-1 active:scale-95" title="Ligar para a loja">
+    <a href="tel:+351233422208" class="md:hidden fixed bottom-24 right-5 z-50 w-14 h-14 bg-brand-green text-white rounded-full flex items-center justify-center shadow-glow-green hover:bg-brand-green-dark transition-all transform hover:-translate-y-1 active:scale-95" title="Ligar para a loja">
         <i class="fa-solid fa-phone text-xl"></i>
     </a>
 
