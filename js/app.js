@@ -28,6 +28,11 @@ function switchView(viewId) {
     if (mainContainer) {
         mainContainer.scrollTop = 0;
     }
+
+    // Notify chatbot to hide greeting badge & start 3-minute cooldown
+    if (window.LusitanaBot && typeof window.LusitanaBot.onSectionChange === 'function') {
+        window.LusitanaBot.onSectionChange(viewId);
+    }
 }
 
 /**

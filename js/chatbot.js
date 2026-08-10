@@ -16,7 +16,9 @@
       box-shadow: 0 10px 25px -5px rgba(92, 158, 49, 0.3), 0 4px 12px rgba(26, 26, 26, 0.06);
       font-size: 12px; font-weight: 600; white-space: nowrap;
       cursor: pointer; display: flex; align-items: center; gap: 8px;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 1; transform: translateY(0) scale(1);
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+      visibility: visible;
     }
     @media (min-width: 768px) { #lus-greeting { bottom: 74px; } }
     #lus-greeting::after {
@@ -25,7 +27,12 @@
       border-right:1.5px solid #5C9E31; border-bottom:1.5px solid #5C9E31;
       transform:rotate(45deg);
     }
-    #lus-greeting.hidden { opacity:0; pointer-events:none; transform:translateY(6px); }
+    #lus-greeting.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px) scale(0.96);
+      visibility: hidden;
+    }
 
     .lus-greeting-dots {
       display: inline-flex; align-items: center; gap: 4px; padding: 2px 4px;
@@ -517,33 +524,118 @@
     btn('&#x2190; Ver servi\u00e7os', 'ghost', reset);
   }
 
-  // Mensajes aleatorios de llamada a la acción (foco en librería/papelería)
+  // Mensagens contextuais por secção com Unicode nativo para o efeito typewriter
+  var CONTEXTUAL_GREETINGS = {
+    'inicio': [
+      'Procura um livro ou manual escolar? 📚',
+      'Precisa de material escolar ou de arte? 🎒',
+      'Fale connosco para encomendas rápidas! 💬'
+    ],
+    'historia': [
+      'Conhece os nossos 90+ anos de história? 🏛️',
+      'Dúvidas sobre a nossa loja? Pergunte-me! 💬'
+    ],
+    'servicios': [
+      'Precisa de fotocópias ou impressões? 🖨️',
+      'Quer encomendar manuais escolares? 📦',
+      'Procura material de arte especializado? 🎨'
+    ],
+    'contacto': [
+      'Quer encomendar ou fazer um pedido? 📩',
+      'Precisa de ajuda com horários ou morada? 📍'
+    ]
+  };
+
   var GREETINGS = [
-    'Procura um livro ou manual escolar? &#x1F4DA;',
-    'Encomende manuais e livros aqui! &#x2728;',
-    'Precisa de fotoc\u00f3pias ou impress\u00f5es? &#x1F5A8;&#xFE0F;',
-    'Precisa de material escolar ou de arte? &#x1F392;',
-    'Fale connosco para encomendas r\u00e1pidas! &#x1F4AC;',
-    'Precisa de encomendar algum artigo? &#x1F4E6;'
+    'Procura um livro ou manual escolar? 📚',
+    'Encomende manuais e livros aqui! ✨',
+    'Precisa de fotocópias ou impressões? 🖨️',
+    'Precisa de material escolar ou de arte? 🎒',
+    'Fale connosco para encomendas rápidas! 💬',
+    'Precisa de encomendar algum artigo? 📦'
   ];
 
   var greetingSpan = greeting.querySelector('span');
+  var greetingTimer = null;
+  var innerTimer = null;
+  var typewriterTimer = null;
+  var FORTY_FIVE_SECONDS_MS = 45 * 1000; // 45 segundos (45.000 ms)
 
-  // Fase 1: Después de 3 segundos, se muestra el indicador de escritura (puntos verdes animados)
-  setTimeout(function() {
-    if (win.classList.contains('hidden')) {
-      greetingSpan.innerHTML = '<span class="lus-greeting-dots"><span></span><span></span><span></span></span>';
-      greeting.classList.remove('hidden');
-      dot.classList.remove('hidden');
+  function hideGreeting() {
+    if (typewriterTimer) clearInterval(typewriterTimer);
+    if (innerTimer) clearTimeout(innerTimer);
+    greeting.classList.add('hidden');
+    dot.classList.add('hidden');
+  }
 
-      // Fase 2: 1.5 segundos después, los puntos se convierten en la frase aleatoria
-      setTimeout(function() {
-        if (win.classList.contains('hidden')) {
-          var randomMsg = GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
-          greetingSpan.innerHTML = randomMsg;
-        }
-      }, 1500);
+  function typeWriterText(text) {
+    if (typewriterTimer) clearInterval(typewriterTimer);
+    var chars = Array.from(text);
+    greetingSpan.textContent = '';
+    var i = 0;
+    typewriterTimer = setInterval(function() {
+      if (i < chars.length) {
+        greetingSpan.textContent += chars[i];
+        i++;
+      } else {
+        clearInterval(typewriterTimer);
+        typewriterTimer = null;
+      }
+    }, 28); // 28ms por caracter = velocidade de escrita realista e fluida
+  }
+
+  function showContextualGreeting() {
+    // Não mostra o balão se a janela de chat já estiver aberta
+    if (!win.classList.contains('hidden')) return;
+
+    // Deteta a secção ativa no momento
+    var activeSec = document.querySelector('.view-section.active');
+    var viewId = activeSec ? activeSec.id.replace('view-', '') : 'inicio';
+
+    var list = CONTEXTUAL_GREETINGS[viewId] || GREETINGS;
+    var randomMsg = list[Math.floor(Math.random() * list.length)];
+
+    // Mostra primeiro os pontos animados de escrita (...)
+    greetingSpan.innerHTML = '<span class="lus-greeting-dots"><span></span><span></span><span></span></span>';
+    greeting.classList.remove('hidden');
+    dot.classList.remove('hidden');
+
+    if (innerTimer) clearTimeout(innerTimer);
+    innerTimer = setTimeout(function() {
+      if (win.classList.contains('hidden') && !greeting.classList.contains('hidden')) {
+        // Inicia o efeito máquina de escrever caracter a caracter
+        typeWriterText(randomMsg);
+      }
+    }, 1200);
+  }
+
+  function resetGreetingTimer(delayMs) {
+    if (greetingTimer) clearTimeout(greetingTimer);
+    hideGreeting();
+    greetingTimer = setTimeout(function() {
+      showContextualGreeting();
+    }, typeof delayMs === 'number' ? delayMs : FORTY_FIVE_SECONDS_MS);
+  }
+
+  // Listener global para capturar qualquer clique de navegação entre secções
+  document.addEventListener('click', function(e) {
+    var navElem = e.target.closest('.nav-tab, [onclick*="switchView"], [id^="tab-"]');
+    if (navElem) {
+      resetGreetingTimer(FORTY_FIVE_SECONDS_MS);
     }
-  }, 3000);
+  });
+
+  // Expor API global para o app.js detetar mudanças de secção
+  window.LusitanaBot = {
+    onSectionChange: function() {
+      // Oculta a mensagem imediatamente e inicia a contagem de 45 segundos
+      resetGreetingTimer(FORTY_FIVE_SECONDS_MS);
+    },
+    hideGreeting: hideGreeting,
+    showGreeting: showContextualGreeting
+  };
+
+  // Primeira saudação inicial 3 segundos após carregar o site (sem necessidade de cliques)
+  resetGreetingTimer(3000);
 
 })();
