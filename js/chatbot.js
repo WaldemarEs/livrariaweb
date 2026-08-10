@@ -524,35 +524,37 @@
     btn('&#x2190; Ver servi\u00e7os', 'ghost', reset);
   }
 
-  // Mensagens contextuais por secção com Unicode nativo para o efeito typewriter
+  // Mensagens contextuais por secção (foco em ajuda e acolhimento amigável, não vendedor)
   var CONTEXTUAL_GREETINGS = {
     'inicio': [
-      'Procura um livro ou manual escolar? 📚',
-      'Precisa de material escolar ou de arte? 🎒',
-      'Fale connosco para encomendas rápidas! 💬'
+      'Olá! Precisa de alguma informação? 💬',
+      'Estou aqui se precisar de ajuda! 👋',
+      'Procura algum livro ou artigo específico? 📚',
+      'Posso ajudar a encontrar o que precisa! 😊'
     ],
     'historia': [
-      'Conhece os nossos 90+ anos de história? 🏛️',
-      'Dúvidas sobre a nossa loja? Pergunte-me! 💬'
+      'Tem alguma dúvida sobre a nossa loja? 🏬',
+      'Estou por aqui se precisar de ajuda! 👋',
+      'Posso ajudar em algo mais? 😊'
     ],
     'servicios': [
-      'Precisa de fotocópias ou impressões? 🖨️',
-      'Quer encomendar manuais escolares? 📦',
-      'Procura material de arte especializado? 🎨'
+      'Precisa de ajuda com impressões ou livros? 🖨️',
+      'Dúvidas sobre os nossos serviços? Pergunta-me! 💬',
+      'Posso ajudar com a sua lista escolar ou material de arte? 🎨'
     ],
     'contacto': [
-      'Quer encomendar ou fazer um pedido? 📩',
-      'Precisa de ajuda com horários ou morada? 📍'
+      'Quer esclarecer alguma dúvida rapidamente? 📩',
+      'Posso ajudar com os horários ou localização? 📍',
+      'Deixe a sua mensagem, estou aqui para ajudar! 👋'
     ]
   };
 
   var GREETINGS = [
-    'Procura um livro ou manual escolar? 📚',
-    'Encomende manuais e livros aqui! ✨',
-    'Precisa de fotocópias ou impressões? 🖨️',
-    'Precisa de material escolar ou de arte? 🎒',
-    'Fale connosco para encomendas rápidas! 💬',
-    'Precisa de encomendar algum artigo? 📦'
+    'Olá! Precisa de alguma ajuda? 👋',
+    'Estou aqui se tiver qualquer dúvida! 😊',
+    'Procura algum livro ou artigo de papelaria? 📚',
+    'Posso ajudar a encontrar o que procura! 💬',
+    'Precisa de informações sobre a nossa loja? 🏬'
   ];
 
   var greetingSpan = greeting.querySelector('span');
@@ -575,13 +577,14 @@
     var i = 0;
     typewriterTimer = setInterval(function() {
       if (i < chars.length) {
-        greetingSpan.textContent += chars[i];
         i++;
+        greetingSpan.textContent = chars.slice(0, i).join('') + ' ▌';
       } else {
         clearInterval(typewriterTimer);
         typewriterTimer = null;
+        greetingSpan.textContent = text;
       }
-    }, 28); // 28ms por caracter = velocidade de escrita realista e fluida
+    }, 45); // 45ms por caracter = efeito de escrita claramente visível com cursor
   }
 
   function showContextualGreeting() {
@@ -603,10 +606,10 @@
     if (innerTimer) clearTimeout(innerTimer);
     innerTimer = setTimeout(function() {
       if (win.classList.contains('hidden') && !greeting.classList.contains('hidden')) {
-        // Inicia o efeito máquina de escrever caracter a caracter
+        // Inicia o efeito máquina de escrever caracter a caracter com cursor
         typeWriterText(randomMsg);
       }
-    }, 1200);
+    }, 500);
   }
 
   function resetGreetingTimer(delayMs) {
