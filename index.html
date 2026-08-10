@@ -83,10 +83,7 @@
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-paper-200/80 shrink-0 transition-all">
         <div class="max-w-6xl mx-auto px-5 py-2.5 flex items-center justify-between">
             <!-- Brand Logo Button -->
-            <button onclick="switchView('inicio')" class="flex items-center gap-3 group text-left focus:outline-none">
-                <!-- Official Image Logo -->
-                <img src="img/logo.png" alt="Logo Papelaria Lusitana" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105 drop-shadow-sm">
-
+            <button onclick="switchView('inicio')" class="flex items-center group text-left focus:outline-none">
                 <div class="flex flex-col justify-center">
                     <span class="font-serif font-bold text-xl sm:text-2xl tracking-tight text-brand-dark leading-none -mb-0.5">LUSITANA</span>
                     <span class="font-brand text-[10px] sm:text-[11px] font-normal text-brand-green tracking-normal lowercase leading-none">papelaria livraria</span>
@@ -165,43 +162,30 @@
     <main id="main-viewport-container" class="flex-1 w-full max-w-6xl mx-auto px-5 overflow-y-auto custom-scrollbar min-h-0 relative z-10">
 
         <!-- Persistent Global Subtitle -->
-        <div class="w-full pt-2 sm:pt-3 pb-0 flex flex-row items-center justify-center sm:justify-start text-ink-500 select-none">
+        <div class="w-full pt-1 sm:pt-1.5 pb-0 flex flex-row items-center justify-start gap-3.5 text-ink-500 select-none">
+            <img src="img/logo.png" alt="Logo Papelaria Lusitana" class="h-12 sm:h-16 w-auto object-contain drop-shadow-md contrast-150 saturate-150 brightness-90">
             <span class="font-sans font-semibold text-xs sm:text-sm tracking-wide">Papelaria e Livraria na Figueira da Foz — Desde 1933.</span>
         </div>
 
         <!-- VIEW 1: INÍCIO -->
-        <section id="view-inicio" class="view-section active py-2 sm:py-4 lg:py-3">
-            <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center py-2">
+        <section id="view-inicio" class="view-section active py-4 sm:py-6 lg:py-8">
+            <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start pb-2">
                 
                 <!-- Left Hero Column -->
                 <div class="lg:col-span-8 space-y-4 sm:space-y-5">
-                    <div class="flex flex-wrap items-center gap-4 sm:gap-6 pb-2 sm:pb-3 stagger-1">
-                        <!-- Sello Desde 1933 -->
-                        <div class="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rotate-[-8deg] hover:rotate-0 transition-transform duration-300">
-                            <svg viewBox="0 0 100 100" class="w-full h-full text-brand-green drop-shadow-md">
-                                <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 2" />
-                                <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="1" />
-                                <path d="M20 50 A 30 30 0 0 1 80 50" id="curve" fill="transparent" />
-                                <text class="font-serif font-bold text-[14.5px]" fill="currentColor" letter-spacing="2">
-                                    <textPath href="#curve" startOffset="50%" text-anchor="middle">LUSITANA</textPath>
-                                </text>
-                                <text x="50" y="64" font-family="Montserrat" font-size="9" font-weight="bold" fill="currentColor" text-anchor="middle">DESDE</text>
-                                <text x="50" y="78" font-family="Playfair Display" font-size="16" font-weight="bold" fill="currentColor" text-anchor="middle">1933</text>
-                            </svg>
-                        </div>
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-[11px] font-bold shadow-sm h-fit">
+                    <div class="space-y-2">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-orange/10 text-brand-orange text-xs font-bold uppercase tracking-wider shadow-sm stagger-1">
                             <i class="fa-solid fa-ribbon"></i>
-                            <span>Comércio com História</span>
+                            <span>Comércio com História · Selo Oficial</span>
                         </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-[2.8rem] xl:text-[3.2rem] font-serif font-bold text-brand-dark leading-[1.2] tracking-tight stagger-2">
+                            A sua livraria e papelaria de confiança em 
+                            <span class="relative inline-block whitespace-nowrap">
+                                <span class="relative z-10">Figueira da Foz</span>
+                                <span class="absolute bottom-1 sm:bottom-2 left-0 w-full h-3 sm:h-4 bg-brand-green/30 -z-0 -rotate-1 rounded-sm"></span>
+                            </span>.
+                        </h1>
                     </div>
-
-                    <h1 class="text-3xl sm:text-4xl lg:text-[2.8rem] xl:text-[3.2rem] font-serif font-bold text-brand-dark leading-[1.2] tracking-tight stagger-2">
-                        A sua livraria e papelaria de confiança em 
-                        <span class="relative inline-block whitespace-nowrap">
-                            <span class="relative z-10">Figueira da Foz</span>
-                            <span class="absolute bottom-1 sm:bottom-2 left-0 w-full h-3 sm:h-4 bg-brand-green/30 -z-0 -rotate-1 rounded-sm"></span>
-                        </span>.
-                    </h1>
 
                     <p class="text-xs sm:text-sm text-ink-700 font-normal leading-relaxed text-justify max-w-xl stagger-3">
                         Um espaço histórico dedicado à literatura, imprensa, material escolar e de escritório com atendimento próximo e personalizado.
@@ -283,12 +267,12 @@
 
                     <!-- Phone Contact for Desktop (Expandable) -->
                     <div class="hidden lg:flex mt-4 ml-14 stagger-5" style="animation-delay: 0.8s">
-                        <a href="tel:+351233422208" class="group inline-flex items-center h-12 rounded-full bg-brand-green text-white hover:bg-brand-green-dark transition-all duration-500 shadow-glow-green" title="Ligar para a loja">
+                        <a href="tel:+351930505242" class="group inline-flex items-center h-12 rounded-full bg-brand-green text-white hover:bg-brand-green-dark transition-all duration-500 shadow-glow-green" title="Ligar para a loja">
                             <div class="w-12 h-12 flex items-center justify-center shrink-0">
                                 <i class="fa-solid fa-phone text-sm transition-transform duration-300 group-hover:rotate-12"></i>
                             </div>
                             <div class="overflow-hidden max-w-0 opacity-0 group-hover:max-w-[200px] group-hover:opacity-100 group-hover:pr-6 transition-all duration-500 ease-out flex items-center">
-                                <span class="font-bold text-sm tracking-wide whitespace-nowrap">233 422 208</span>
+                                <span class="font-bold text-sm tracking-wide whitespace-nowrap">930 505 242</span>
                             </div>
                         </a>
                     </div>
@@ -299,8 +283,8 @@
         </section>
 
         <!-- VIEW 2: SOBRE NÓS / HISTÓRIA -->
-        <section id="view-historia" class="view-section py-6 sm:py-10">
-            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <section id="view-historia" class="view-section py-4 sm:py-6 lg:py-8">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
                 
                 <!-- Left: The Story -->
                 <div class="space-y-5">
@@ -467,7 +451,7 @@
         </section>
 
         <!-- VIEW 4: CONTACTO & ENCOMENDAS -->
-        <section id="view-contacto" class="view-section py-2 sm:py-6">
+        <section id="view-contacto" class="view-section py-6 sm:py-10">
             <div class="grid lg:grid-cols-12 gap-6 items-center">
                 
                 <!-- Contact Info & Full Color Map Column -->
@@ -495,11 +479,9 @@
                                 <i class="fa-solid fa-phone text-sm"></i>
                             </div>
                             <div class="flex-1 pt-1">
-                                <p class="text-brand-dark font-bold text-xs uppercase tracking-wide">Telefones</p>
+                                <p class="text-brand-dark font-bold text-xs uppercase tracking-wide">Telefone</p>
                                 <div class="text-ink-500 text-xs mt-1 space-x-2 sm:space-x-3">
                                     <a href="tel:+351930505242" class="hover:text-brand-green transition-colors">+351 930 505 242</a>
-                                    <span class="text-ink-300 font-normal">|</span>
-                                    <a href="tel:+351233422208" class="hover:text-brand-green transition-colors">+351 233 422 208</a>
                                 </div>
                             </div>
                         </div>
@@ -516,7 +498,7 @@
                         </div>
 
                         <!-- Schedule -->
-                        <div class="group flex items-start gap-4 stagger-3" style="animation-delay: 0.6s">
+                        <div class="group flex items-start gap-4 stagger-3 mb-2" style="animation-delay: 0.6s">
                             <div class="w-8 h-8 rounded-full bg-brand-green-light text-brand-green flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 shadow-sm">
                                 <i class="fa-solid fa-clock text-sm"></i>
                             </div>
@@ -532,7 +514,7 @@
                     </div>
 
                     <!-- Full Color Interactive Google Map -->
-                    <div class="h-24 sm:h-32 lg:h-40 rounded-2xl overflow-hidden border border-paper-200/90 shadow-sm glass-panel relative group mt-2 stagger-4" style="animation-delay: 0.7s">
+                    <div class="h-24 sm:h-32 lg:h-40 rounded-2xl overflow-hidden border border-paper-200/90 shadow-sm glass-panel relative group mt-6 sm:mt-8 stagger-4" style="animation-delay: 0.7s">
                         <iframe 
                             title="Ubicación Papelaria Lusitana"
                             src="https://maps.google.com/maps?q=Papelaria%20Lusitana,%20Figueira%20da%20Foz&t=&z=16&ie=UTF8&iwloc=&output=embed" 
@@ -605,8 +587,8 @@
         <div class="py-2.5 px-4 sm:px-6 text-[10px] sm:text-[11px] text-ink-500">
             <div class="max-w-6xl mx-auto flex flex-row justify-center items-center">
                 <div class="flex flex-row items-center justify-center flex-wrap gap-1 sm:gap-3 w-full">
-                    <p>&copy; <span id="year"></span> Papelaria Lusitana.</p>
-                    <span class="hidden sm:block text-ink-300">|</span>
+                    <p>&copy; <span id="year"></span> Papelaria Lusitana </p>
+                    <span class="text-ink-300">|</span>
                     <p>Desenvolvido por <a href="https://waldemarescobar.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-dark hover:text-brand-green transition-colors cursor-pointer">waldemarEs</a></p>
                 </div>
             </div>
@@ -614,7 +596,7 @@
     </footer>
 
     <!-- Mobile Floating Action Button for Calls -->
-    <a href="tel:+351233422208" class="md:hidden fixed bottom-12 right-3 z-50 w-10 h-10 bg-brand-green text-white rounded-full flex items-center justify-center shadow-glow-green hover:bg-brand-green-dark transition-all transform hover:-translate-y-1 active:scale-95" title="Ligar para a loja">
+    <a href="tel:+351930505242" class="md:hidden fixed bottom-12 right-3 z-50 w-10 h-10 bg-brand-green text-white rounded-full flex items-center justify-center shadow-glow-green hover:bg-brand-green-dark transition-all transform hover:-translate-y-1 active:scale-95" title="Ligar para a loja">
         <i class="fa-solid fa-phone text-base"></i>
     </a>
 
