@@ -164,3 +164,61 @@ window.addEventListener('DOMContentLoaded', () => {
         yearEl.textContent = new Date().getFullYear();
     }
 });
+
+/**
+ * Legal Modal Dialog Management (Privacy Policy & Terms of Use)
+ */
+function openLegalModal(tabType = 'privacidade') {
+    const modal = document.getElementById('legal-modal');
+    if (!modal) return;
+
+    switchLegalTab(tabType);
+    modal.classList.remove('hidden');
+    // Force reflow for CSS transition
+    void modal.offsetWidth;
+    modal.classList.add('active-modal');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLegalModal() {
+    const modal = document.getElementById('legal-modal');
+    if (!modal) return;
+
+    modal.classList.remove('active-modal');
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }, 250);
+}
+
+function switchLegalTab(tabType) {
+    const privTab = document.getElementById('legal-tab-privacidade');
+    const termosTab = document.getElementById('legal-tab-termos');
+    const privContent = document.getElementById('legal-content-privacidade');
+    const termosContent = document.getElementById('legal-content-termos');
+
+    if (!privTab || !termosTab || !privContent || !termosContent) return;
+
+    if (tabType === 'privacidade') {
+        privTab.className = 'text-xs sm:text-sm font-bold pb-1 border-b-2 border-brand-green text-brand-green transition-colors focus:outline-none';
+        termosTab.className = 'text-xs sm:text-sm font-semibold pb-1 border-b-2 border-transparent text-ink-500 hover:text-brand-dark transition-colors focus:outline-none';
+        privContent.classList.remove('hidden');
+        termosContent.classList.add('hidden');
+    } else {
+        termosTab.className = 'text-xs sm:text-sm font-bold pb-1 border-b-2 border-brand-green text-brand-green transition-colors focus:outline-none';
+        privTab.className = 'text-xs sm:text-sm font-semibold pb-1 border-b-2 border-transparent text-ink-500 hover:text-brand-dark transition-colors focus:outline-none';
+        termosContent.classList.remove('hidden');
+        privContent.classList.add('hidden');
+    }
+}
+
+// Global keydown handler for Escape key closing modal
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('legal-modal');
+        if (modal && !modal.classList.contains('hidden')) {
+            closeLegalModal();
+        }
+    }
+});
+

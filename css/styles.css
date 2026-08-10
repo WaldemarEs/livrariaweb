@@ -155,3 +155,18 @@ html, body {
 .animate-blob-reverse {
     animation: floatBlob 20s ease-in-out infinite reverse;
 }
+
+/* Legal Modal Dialog Animations & Visibility */
+#legal-modal:not(.hidden) {
+    display: flex;
+}
+
+#legal-modal.active-modal {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#legal-modal.active-modal > div:last-child {
+    transform: scale(1);
+}
+

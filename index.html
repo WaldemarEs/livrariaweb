@@ -582,14 +582,25 @@
     </main>
 
     <!-- Footer Status Bar -->
-    <footer class="z-40 shrink-0 border-t border-paper-200/80 bg-white/70 backdrop-blur-md pb-[env(safe-area-inset-bottom)] pb-3 sm:pb-0">
+    <footer class="z-40 shrink-0 border-t border-paper-200/80 bg-white/80 backdrop-blur-md pt-2 pb-3.5 sm:py-3.5">
         <!-- Status Bar -->
-        <div class="py-2.5 px-4 sm:px-6 text-[10px] sm:text-[11px] text-ink-500">
-            <div class="max-w-6xl mx-auto flex flex-row justify-center items-center">
-                <div class="flex flex-row items-center justify-center flex-wrap gap-1 sm:gap-3 w-full">
-                    <p>&copy; <span id="year"></span> Papelaria Lusitana </p>
-                    <span class="text-ink-300">|</span>
+        <div class="px-5 sm:px-8 text-[10.5px] sm:text-[12px] text-ink-500 font-medium leading-tight">
+            <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-4">
+                <!-- Left: Copyright -->
+                <div class="text-center sm:text-left">
+                    <p>&copy; <span id="year"></span> <span class="font-semibold text-brand-dark">Papelaria Lusitana</span></p>
+                </div>
+                <!-- Right: Dev credit & Legal links -->
+                <div class="flex flex-wrap items-center justify-center sm:justify-end gap-1.5 sm:gap-3 text-center sm:text-right">
                     <p>Desenvolvido por <a href="https://waldemarescobar.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-dark hover:text-brand-green transition-colors cursor-pointer">waldemarEs</a></p>
+                    <span class="text-ink-300 font-bold select-none">·</span>
+                    <button onclick="openLegalModal('privacidade')" class="hover:text-brand-green transition-colors underline-offset-2 hover:underline focus:outline-none">
+                        Política de Privacidade
+                    </button>
+                    <span class="text-ink-300 font-bold select-none">·</span>
+                    <button onclick="openLegalModal('termos')" class="hover:text-brand-green transition-colors underline-offset-2 hover:underline focus:outline-none">
+                        Termos de Utilização
+                    </button>
                 </div>
             </div>
         </div>
@@ -611,6 +622,123 @@
         <a href="mailto:papelarialusitana@gmail.com" class="w-9 h-9 rounded-full bg-white/70 backdrop-blur-md border border-paper-200/50 shadow-sm flex items-center justify-center text-ink-600 hover:bg-brand-green hover:text-white transition-all hover:scale-105" title="Email">
             <i class="fa-solid fa-envelope text-base"></i>
         </a>
+    </div>
+
+    <!-- Legal Modal Dialog (Glassmorphism) -->
+    <div id="legal-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 hidden transition-all duration-300 opacity-0 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
+        <!-- Backdrop -->
+        <div onclick="closeLegalModal()" class="absolute inset-0 bg-brand-dark/40 backdrop-blur-md transition-opacity"></div>
+
+        <!-- Modal Card Container -->
+        <div class="relative bg-white/95 backdrop-blur-xl border border-paper-200/90 shadow-2xl rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden transform scale-95 transition-transform duration-300 z-10">
+            <!-- Modal Header with Tabs -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-paper-200/80 bg-paper-50/50 shrink-0">
+                <!-- Navigation Tabs -->
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <button id="legal-tab-privacidade" onclick="switchLegalTab('privacidade')" class="text-xs sm:text-sm font-bold pb-1 border-b-2 border-brand-green text-brand-green transition-colors focus:outline-none">
+                        <i class="fa-solid fa-user-shield mr-1.5"></i>Política de Privacidade
+                    </button>
+                    <button id="legal-tab-termos" onclick="switchLegalTab('termos')" class="text-xs sm:text-sm font-semibold pb-1 border-b-2 border-transparent text-ink-500 hover:text-brand-dark transition-colors focus:outline-none">
+                        <i class="fa-solid fa-file-contract mr-1.5"></i>Termos de Utilização
+                    </button>
+                </div>
+
+                <!-- Close Button -->
+                <button onclick="closeLegalModal()" class="w-8 h-8 rounded-full bg-paper-200/60 hover:bg-paper-300/80 text-ink-600 hover:text-brand-dark flex items-center justify-center transition-colors focus:outline-none" title="Fechar (ESC)">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+
+            <!-- Modal Scrollable Content -->
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6 text-xs sm:text-sm text-ink-700 leading-relaxed">
+                <!-- Privacy Section -->
+                <div id="legal-content-privacidade" class="space-y-4">
+                    <div class="border-b border-paper-200 pb-3">
+                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-dark">Política de Privacidade</h3>
+                        <p class="text-[11px] text-ink-500 mt-0.5">Última atualização: Agosto de 2026 · Livraria e Papelaria Lusitana</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider mb-1">1. Compromisso com a Privacidade</h4>
+                            <p class="text-justify">A <strong>Livraria e Papelaria Lusitana</strong>, situada na Rua da República 224, Figueira da Foz, respeita a privacidade dos utilizadores do seu site. Esta Política explica como tratamos os dados pessoais recolhidos através do nosso formulário de contacto e pedidos de informação, em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD - Regulamento UE 2016/679).</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider mb-1">2. Dados Recolhidos e Finalidade</h4>
+                            <p class="text-justify">Recolhemos apenas os dados estritamente necessários fornecidos de forma voluntária pelo utilizador ao preencher o formulário de contacto:</p>
+                            <ul class="list-disc list-inside mt-1.5 space-y-1 pl-2 text-ink-600">
+                                <li><strong>Nome:</strong> Para identificação e resposta personalizada.</li>
+                                <li><strong>Contacto (Telefone ou Email):</strong> Para podermos responder às suas questões ou confirmar encomendas.</li>
+                                <li><strong>Mensagem e Motivo:</strong> Para processar a sua solicitação sobre livros, artigos de papelaria ou material escolar.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider mb-1">3. Conservação e Partilha de Dados</h4>
+                            <p class="text-justify">Os seus dados pessoais são utilizados exclusivamente pela Livraria e Papelaria Lusitana para a finalidade descrita. <strong>Não vendemos, alugamos nem partilhamos</strong> os seus dados pessoais com terceiros para fins de marketing.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider mb-1">4. Direitos dos Titulares dos Dados</h4>
+                            <p class="text-justify">Nos termos do RGPD, tem o direito de solicitar o acesso, retificação, eliminação ou limitação do tratamento dos seus dados pessoais. Para exercer qualquer um destes direitos, basta contactar-nos através do e-mail <a href="mailto:papelarialusitana@gmail.com" class="text-brand-green font-semibold hover:underline">papelarialusitana@gmail.com</a> ou dirigir-se à nossa loja física em Figueira da Foz.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider mb-1">5. Cookies e Tecnologias de Rastreio</h4>
+                            <p class="text-justify">Este site utiliza apenas recursos essenciais ao seu correto funcionamento técnico e estético, não empregando cookies de rastreio de terceiros nem recolhendo dados de navegação para perfis publicitários.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms Section -->
+                <div id="legal-content-termos" class="space-y-4 hidden">
+                    <div class="border-b border-paper-200 pb-3">
+                        <h3 class="font-serif font-bold text-lg sm:text-xl text-brand-dark">Termos de Utilização</h3>
+                        <p class="text-[11px] text-ink-500 mt-0.5">Última atualização: Agosto de 2026 · Livraria e Papelaria Lusitana</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider mb-1">1. Condições Gerais</h4>
+                            <p class="text-justify">Ao aceder e utilizar este website, o utilizador concorda com os presentes Termos de Utilização. Este site destina-se a dar a conhecer a história, localização, catálogo de serviços e formulário de contacto da <strong>Livraria e Papelaria Lusitana</strong> na Figueira da Foz.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider mb-1">2. Informações de Produtos e Reservas</h4>
+                            <p class="text-justify">As informações de artigos, livros ou disponibilidade apresentadas têm caráter informativo. As submissões efetuadas através do formulário de contacto constituem intenções de encomenda ou reserva, dependendo da confirmação de stock e disponibilidade por parte da nossa equipa na loja física.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider mb-1">3. Propriedade Intelectual</h4>
+                            <p class="text-justify">Todos os conteúdos deste website (textos, logótipos, elementos gráficos e selos informativos como "Comércio com História") são propriedade da Livraria e Papelaria Lusitana ou devidamente autorizados. É proibida a reprodução total ou parcial sem autorização prévia.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider mb-1">4. Limitação de Responsabilidade</h4>
+                            <p class="text-justify">Fazemos todos os esforços para garantir a exatidão das informações, horários e contactos apresentados. No entanto, não nos responsabilizamos por eventuais falhas temporárias no acesso ao site ou erros tipográficos.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wider mb-1">5. Resolução Alternativa de Litígios (RAL)</h4>
+                            <p class="text-justify">Em cumprimento do artigo 18.º da Lei n.º 144/2015, informa-se que em caso de litígio o consumidor pode recorrer a uma entidade de Resolução Alternativa de Litígios de Consumo:</p>
+                            <div class="bg-paper-100/70 p-3 rounded-xl border border-paper-200/80 mt-2 text-xs space-y-1">
+                                <p class="font-bold text-brand-dark">Centro de Arbitragem de Conflitos de Consumo do Distrito de Coimbra (CACRC)</p>
+                                <p class="text-ink-600">Endereço: Av. Fernão de Magalhães, N.º 240, 1.º - 3000-172 Coimbra</p>
+                                <p class="text-ink-600">Website: <a href="https://www.centrodearbitragemdecoimbra.pt" target="_blank" rel="noopener noreferrer" class="text-brand-green font-semibold hover:underline">www.centrodearbitragemdecoimbra.pt</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer Button -->
+            <div class="px-6 py-3 border-t border-paper-200/80 bg-paper-50/50 flex justify-end shrink-0">
+                <button onclick="closeLegalModal()" class="bg-brand-green hover:bg-brand-green-dark text-white font-bold text-xs uppercase tracking-wider px-5 py-2 rounded-xl transition-all duration-200 shadow-sm focus:outline-none">
+                    Compreendido
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Application Script -->
