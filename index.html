@@ -582,18 +582,20 @@
     </main>
 
     <!-- Footer Status Bar -->
-    <footer class="z-40 shrink-0 border-t border-paper-200/80 bg-white/80 backdrop-blur-md pt-2 pb-3.5 sm:py-3.5">
+    <footer class="z-40 shrink-0 border-t border-paper-200/80 bg-white/80 backdrop-blur-md py-1.5 sm:py-3.5">
         <!-- Status Bar -->
         <div class="px-5 sm:px-8 text-[10.5px] sm:text-[12px] text-ink-500 font-medium leading-tight">
-            <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-4">
-                <!-- Left: Copyright -->
-                <div class="text-center sm:text-left">
+            <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-0.5 sm:gap-4">
+                <!-- Left: Copyright & Mobile Dev Credit -->
+                <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-center sm:text-left">
                     <p>&copy; <span id="year"></span> <span class="font-semibold text-brand-dark">Papelaria Lusitana</span></p>
+                    <span class="text-ink-300 font-bold select-none sm:hidden">·</span>
+                    <p class="sm:hidden">Desenvolvido por <a href="https://waldemarescobar.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-dark hover:text-brand-green transition-colors cursor-pointer">waldemarEs</a></p>
                 </div>
-                <!-- Right: Dev credit & Legal links -->
+                <!-- Right: Desktop Dev Credit & Legal links -->
                 <div class="flex flex-wrap items-center justify-center sm:justify-end gap-1.5 sm:gap-3 text-center sm:text-right">
-                    <p>Desenvolvido por <a href="https://waldemarescobar.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-dark hover:text-brand-green transition-colors cursor-pointer">waldemarEs</a></p>
-                    <span class="text-ink-300 font-bold select-none">·</span>
+                    <p class="hidden sm:block">Desenvolvido por <a href="https://waldemarescobar.vercel.app/" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-dark hover:text-brand-green transition-colors cursor-pointer">waldemarEs</a></p>
+                    <span class="text-ink-300 font-bold select-none hidden sm:inline">·</span>
                     <button onclick="openLegalModal('privacidade')" class="hover:text-brand-green transition-colors underline-offset-2 hover:underline focus:outline-none">
                         Política de Privacidade
                     </button>
